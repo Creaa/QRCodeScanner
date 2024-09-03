@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'rgba(0,0,0, 0.8)',
     width: '100%',
+    paddingBottom: Platform.OS === 'ios' ? 0 : 0,
   },
   menuList: {
     paddingTop: 10,
@@ -44,8 +45,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     width: '100%',
-    justifyContent: 'center',
-    columnGap: '20%',
+    justifyContent: 'space-between',
+    paddingHorizontal: '20%',
   },
   menuItem: {
     alignItems: 'center',

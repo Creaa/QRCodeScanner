@@ -1,7 +1,6 @@
-import React, {FC, useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import PageLayout from './src/components/PageLayout';
 import QRCodeScanner from './src/components/QRCodeScanner';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import createTable from './src/db/createTable';
 import addCode from './src/db/addCode';
 import CodesList from './src/components/List';
@@ -25,7 +24,7 @@ function App(): React.JSX.Element {
     if (data) {
       setQrCodes(data);
     }
-  }, [data]);
+  }, [data, setQrCodes]);
 
   const onNewCodeHandler = useCallback((code: string) => {
     setIsDBProcessing(prevIsDBProcessing => {
@@ -90,18 +89,16 @@ function App(): React.JSX.Element {
       removeData();
       syncData();
     }
-  }, [qrCodes, isConnected]);
+  }, [qrCodes, isConnected, refetch]);
 
   return (
-    <SafeAreaView>
-      <PageLayout mode={mode} setMode={setMode}>
-        {mode === 'scanner' ? (
-          <QRCodeScanner onAddedCode={onNewCodeHandler} />
-        ) : (
-          <CodesList />
-        )}
-      </PageLayout>
-    </SafeAreaView>
+    <PageLayout mode={mode} setMode={setMode}>
+      {mode === 'scanner' ? (
+        <QRCodeScanner onAddedCode={onNewCodeHandler} />
+      ) : (
+        <CodesList />
+      )}
+    </PageLayout>
   );
 }
 

@@ -1,9 +1,8 @@
-import React, {FC, useCallback, useEffect, useMemo, useState} from 'react';
+import React, {FC, useCallback, useMemo} from 'react';
 import {Alert, FlatList, ListRenderItemInfo, View} from 'react-native';
 import {List, Text} from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import QRCode from '../../interfaces/QRCode';
-import useQRCodeData from '../../db/getCodes';
 import {useAtom} from 'jotai';
 import {qrCodesAtom} from '../../atoms/qrCodesAtom';
 
